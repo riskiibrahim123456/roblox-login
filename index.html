@@ -1,87 +1,90 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Roblox - Login</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
         }
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #1a1a2e;
+            background: #f5f5f5;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            padding: 16px;
         }
         .container {
-            background: #16213e;
-            padding: 40px 30px;
+            background: white;
             border-radius: 12px;
-            width: 380px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            text-align: center;
-            border: 1px solid #2a3a5e;
-        }
-        .logo {
-            width: 100px;
-            margin-bottom: 20px;
-        }
-        .logo svg {
+            padding: 32px 24px 28px;
+            max-width: 400px;
             width: 100%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
-        h2 {
-            color: #fff;
-            font-weight: 400;
-            font-size: 22px;
-            margin-bottom: 25px;
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .back-btn {
+            font-size: 24px;
+            color: #333;
+            cursor: default;
+            opacity: 0.6;
+        }
+        .header h1 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        .label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            display: block;
         }
         .input-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .input-group label {
-            color: #b0b9d0;
-            font-size: 13px;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 5px;
+            margin-bottom: 16px;
         }
         .input-group input {
             width: 100%;
             padding: 12px 14px;
-            border: none;
-            border-radius: 6px;
-            background: #1f2a44;
-            color: #fff;
-            font-size: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #fafafa;
             outline: none;
             transition: 0.2s;
         }
         .input-group input:focus {
-            background: #253155;
-            box-shadow: 0 0 0 2px #5d7bb5;
+            border-color: #d42b2b;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(212, 43, 43, 0.1);
         }
         .input-group input::placeholder {
-            color: #6a7a9e;
+            color: #9ca3af;
         }
         .btn-login {
             width: 100%;
-            padding: 13px;
+            padding: 14px;
             background: #d42b2b;
+            color: white;
             border: none;
-            border-radius: 6px;
-            color: #fff;
+            border-radius: 8px;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
+            margin-top: 4px;
             transition: 0.2s;
-            margin-top: 8px;
         }
         .btn-login:hover {
             background: #b82222;
@@ -91,62 +94,83 @@
             cursor: not-allowed;
         }
         .links {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
+            margin-top: 16px;
+            text-align: center;
         }
         .links a {
-            color: #7d8db5;
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: 500;
             text-decoration: none;
-            transition: 0.2s;
+            display: inline-block;
+            margin: 4px 0;
         }
         .links a:hover {
-            color: #a0b5e0;
             text-decoration: underline;
         }
         .divider {
             border: none;
-            border-top: 1px solid #2a3a5e;
-            margin: 25px 0 15px;
+            border-top: 1px solid #e5e7eb;
+            margin: 20px 0 18px;
         }
-        .btn-signup {
-            background: transparent;
-            border: 1px solid #4a5a7e;
-            border-radius: 6px;
-            color: #fff;
-            padding: 12px 20px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: default;
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .btn-outline {
             width: 100%;
-            opacity: 0.6;
+            padding: 14px;
+            background: white;
+            color: #1a1a1a;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
             transition: 0.2s;
         }
-        .btn-signup:hover {
-            background: #1f2a44;
+        .btn-outline:hover {
+            background: #f3f4f6;
+        }
+        .btn-outline:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .btn-create {
+            width: 100%;
+            padding: 14px;
+            background: #d42b2b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: default;
+            opacity: 0.7;
+            margin-top: 4px;
         }
         .footer {
-            margin-top: 25px;
-            color: #5a6a8e;
-            font-size: 11px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #9ca3af;
         }
         .footer a {
-            color: #7d8db5;
+            color: #9ca3af;
             text-decoration: none;
         }
         .footer a:hover {
             text-decoration: underline;
         }
         .error-box {
-            background: #2a1a1a;
-            border-left: 4px solid #d42b2b;
-            padding: 10px 12px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            color: #f0a0a0;
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            color: #dc2626;
             font-size: 14px;
-            text-align: left;
             display: none;
         }
         .error-box.show {
@@ -154,10 +178,10 @@
         }
         .spinner {
             display: inline-block;
-            width: 18px;
-            height: 18px;
-            border: 2px solid rgba(255,255,255,0.2);
-            border-top: 2px solid #fff;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top: 2px solid white;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
             vertical-align: middle;
@@ -172,44 +196,49 @@
 <body>
 
 <div class="container">
-    <!-- Logo Roblox (SVG) -->
-    <div class="logo">
-        <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="0" y="45" font-family="Arial Black, Arial" font-size="48" font-weight="900" fill="#d42b2b">ROBLOX</text>
-        </svg>
+    <!-- Header: Tambahkan akun -->
+    <div class="header">
+        <span class="back-btn">‹</span>
+        <h1>Tambahkan akun</h1>
     </div>
 
-    <h2>Masuk ke akun Anda</h2>
-
+    <!-- Error -->
     <div class="error-box" id="errorBox">
         <span id="errorText">✕ Kata sandi yang Anda masukkan salah.</span>
     </div>
 
+    <!-- Form -->
     <form id="loginForm">
         <div class="input-group">
-            <label>Username / Email</label>
-            <input type="text" id="username" placeholder="Masukkan username atau email" required>
+            <label class="label">Nama Pengguna/Email/Nomor Ponsel</label>
+            <input type="text" id="username" placeholder="Nama Pengguna/Email/Nomor Ponsel" required>
         </div>
         <div class="input-group">
-            <label>Kata sandi</label>
-            <input type="password" id="password" placeholder="Masukkan kata sandi" required>
+            <label class="label">Password</label>
+            <input type="password" id="password" placeholder="Password" required>
         </div>
-
-        <button type="submit" class="btn-login" id="loginBtn">Masuk</button>
+        <button type="submit" class="btn-login" id="loginBtn">Log In</button>
     </form>
 
+    <!-- Links -->
     <div class="links">
-        <a href="#" id="forgotLink">Lupa kata sandi?</a>
-        <a href="#">Daftar</a>
+        <a href="#" id="forgotLink">Lupa Password atau Nama Pengguna?</a>
     </div>
 
     <hr class="divider">
 
-    <button class="btn-signup" id="signupBtn">Buat akun baru</button>
+    <!-- Tombol bawah -->
+    <div class="btn-group">
+        <button class="btn-outline" id="codeBtn">Kirimi Saya Kode Sekali Pakai</button>
+        <button class="btn-outline" id="quickLoginBtn">Log In Cepat</button>
+    </div>
 
+    <button class="btn-create" id="createBtn">Buat Akun Baru</button>
+
+    <!-- Footer -->
     <div class="footer">
         <a href="#">Privasi</a> · <a href="#">Syarat</a> · <a href="#">Cookie</a><br>
-        <span style="color:#4a5a7e;">© 2026 Roblox Corporation</span>
+        <span style="color:#d1d5db;">© 2026 Roblox Corporation</span>
     </div>
 </div>
 
@@ -224,48 +253,61 @@
         var btn = document.getElementById('loginBtn');
 
         if (!username || !password) {
-            errorText.textContent = '✕ Harap isi username dan kata sandi.';
+            errorText.textContent = '✕ Harap isi semua field.';
             errorBox.classList.add('show');
             return;
         }
 
         errorBox.classList.remove('show');
 
-        // Simulasi loading
         btn.innerHTML = '<span class="spinner"></span> Memproses...';
         btn.disabled = true;
 
         setTimeout(function() {
-            // Ini cuma simulasi — data tidak dikirim ke mana pun
-            btn.innerHTML = 'Masuk';
+            btn.innerHTML = 'Log In';
             btn.disabled = false;
 
             errorText.textContent = '✕ Kata sandi yang Anda masukkan salah.';
             errorBox.classList.add('show');
 
-            // Reset form (optional biar mirip)
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
-
-            // Fokus ke password
             document.getElementById('password').focus();
         }, 1500);
     });
 
-    // Tombol "Lupa kata sandi?" — muncul notif palsu
+    // Lupa password
     document.getElementById('forgotLink').addEventListener('click', function(e) {
         e.preventDefault();
         var errorBox = document.getElementById('errorBox');
         var errorText = document.getElementById('errorText');
-        errorText.textContent = '✉️ Link reset kata sandi telah dikirim ke email Anda.';
+        errorText.textContent = '✉️ Link reset telah dikirim ke email Anda.';
         errorBox.classList.add('show');
         setTimeout(function() {
             errorBox.classList.remove('show');
         }, 3000);
     });
 
-    // Tombol "Buat akun baru" — mati total
-    document.getElementById('signupBtn').addEventListener('click', function(e) {
+    // Kirimi Saya Kode Sekali Pakai
+    document.getElementById('codeBtn').addEventListener('click', function() {
+        var errorBox = document.getElementById('errorBox');
+        var errorText = document.getElementById('errorText');
+        errorText.textContent = '📱 Kode verifikasi telah dikirim ke perangkat Anda.';
+        errorBox.classList.add('show');
+        setTimeout(function() {
+            errorBox.classList.remove('show');
+        }, 3000);
+    });
+
+    // Log In Cepat — mati total
+    document.getElementById('quickLoginBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    });
+
+    // Buat Akun Baru — mati total
+    document.getElementById('createBtn').addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
         return false;
