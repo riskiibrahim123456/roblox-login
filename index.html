@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: #f5f5f5;
+            background: #1a1a2e; /* hitam keunguan gelap */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,32 +18,42 @@
         .container {
             max-width: 420px;
             width: 100%;
-            background: white;
-            border-radius: 12px;
+            background: #16213e; /* card gelap */
+            border-radius: 16px;
             padding: 32px 28px 28px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            border: 1px solid #2a3a5e;
+        }
+        /* LOGO ROBLOX (teks merah) */
+        .logo {
+            text-align: center;
+            font-size: 44px;
+            font-weight: 900;
+            color: #d42b2b;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
         }
         .header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         .back-btn {
             font-size: 28px;
-            color: #333;
+            color: #b0b9d0;
             cursor: default;
-            opacity: 0.6;
+            opacity: 0.7;
             line-height: 1;
         }
         .header h1 {
             font-size: 22px;
             font-weight: 600;
-            color: #1a1a1a;
+            color: #f0f2f5;
         }
         .subtext {
             font-size: 14px;
-            color: #6b6b6b;
+            color: #8a9bb5;
             margin-bottom: 24px;
             margin-left: 40px;
         }
@@ -53,21 +63,20 @@
         .input-group input {
             width: 100%;
             padding: 14px 16px;
-            border: 1px solid #d1d5db;
+            border: none;
             border-radius: 8px;
             font-size: 16px;
-            background: #fafafa;
+            background: #1f2a44;
+            color: #f0f2f5;
             outline: none;
             transition: 0.2s;
-            color: #1a1a1a;
         }
         .input-group input:focus {
-            border-color: #d42b2b;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(212,43,43,0.1);
+            background: #253155;
+            box-shadow: 0 0 0 2px #5d7bb5;
         }
         .input-group input::placeholder {
-            color: #9ca3af;
+            color: #6a7a9e;
         }
         .btn-login {
             width: 100%;
@@ -89,16 +98,16 @@
             text-align: center;
         }
         .links a {
-            color: #1a1a1a;
+            color: #b0b9d0;
             font-size: 14px;
             font-weight: 500;
             text-decoration: none;
             display: inline-block;
         }
-        .links a:hover { text-decoration: underline; }
+        .links a:hover { text-decoration: underline; color: #d0d8f0; }
         .divider {
             border: none;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid #2a3a5e;
             margin: 20px 0 18px;
         }
         .btn-group {
@@ -109,22 +118,22 @@
         .btn-outline {
             width: 100%;
             padding: 14px;
-            background: white;
-            color: #1a1a1a;
-            border: 1px solid #d1d5db;
+            background: transparent;
+            color: #f0f2f5;
+            border: 1px solid #4a5a7e;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
         }
-        .btn-outline:hover { background: #f3f4f6; }
+        .btn-outline:hover { background: #1f2a44; }
         .btn-outline:disabled { opacity: 0.6; cursor: not-allowed; }
         .signup {
             margin-top: 16px;
             text-align: center;
             font-size: 14px;
-            color: #6b6b6b;
+            color: #b0b9d0;
         }
         .signup a {
             color: #d42b2b;
@@ -135,21 +144,22 @@
         .footer-banner {
             margin-top: 20px;
             padding: 12px;
-            background: #f0f2f5;
+            background: #0f1422;
             border-radius: 8px;
             text-align: center;
             font-size: 13px;
             font-weight: 600;
-            color: #1a1a1a;
+            color: #d0d8f0;
             letter-spacing: 0.5px;
+            border: 1px solid #2a3a5e;
         }
         .error-box {
-            background: #fef2f2;
-            border: 1px solid #fca5a5;
-            border-radius: 8px;
+            background: #2a1a1a;
+            border-left: 4px solid #d42b2b;
+            border-radius: 4px;
             padding: 10px 14px;
             margin-bottom: 16px;
-            color: #dc2626;
+            color: #f0a0a0;
             font-size: 14px;
             display: none;
         }
@@ -170,6 +180,9 @@
 </head>
 <body>
 <div class="container">
+    <!-- LOGO ROBLOX MERAH -->
+    <div class="logo">ROBLOX</div>
+
     <!-- Header -->
     <div class="header">
         <span class="back-btn">‹</span>
@@ -211,7 +224,7 @@
         Don't have an account? <a href="#" id="signupLink">Sign Up</a>
     </div>
 
-    <!-- Banner bawah -->
+    <!-- Banner bawah (ULTIMATE FOOTBALL) -->
     <div class="footer-banner">⚽ ULTIMATE FOOTBALL</div>
 </div>
 
